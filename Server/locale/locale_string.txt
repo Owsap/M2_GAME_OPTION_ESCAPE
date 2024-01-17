@@ -1,0 +1,2 @@
+"You have successfully freed yourself.";
+"You have successfully freed yourself.";
