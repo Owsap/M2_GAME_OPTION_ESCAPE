@@ -16,9 +16,7 @@ import net
 
 class EscapeManager(ui.Window):
 	ESCAPE_WAIT_TIME_SEC = 10
-	ESCAPE_DIALOG_TEXT_LINE_HEIGHT = 20
-	ESCAPE_DIALOG_ADJUSTED_WIDTH = 60
-	ESCAPE_BUTTON_COOLTIME = 1
+	ESCAPE_LIMIT_RANGE = 1000
 
 	def __init__(self):
 		ui.Window.__init__(self)
@@ -40,14 +38,11 @@ class EscapeManager(ui.Window):
 		if self.escape_question_dialog:
 			return
 
-		escape_question_dialog = uiCommon.QuestionDialog()
-		escape_question_dialog.SetText(localeInfo.OPTION_ESCAPE_QUESTION_MESSAGE)
+		escape_question_dialog = uiCommon.QuestionDialog2()
+		escape_question_dialog.SetText1(localeInfo.OPTION_ESCAPE_QUESTION_MESSAGE1)
+		escape_question_dialog.SetText2(localeInfo.OPTION_ESCAPE_QUESTION_MESSAGE2)
 		escape_question_dialog.SetAcceptEvent(lambda answer = True : self.ProcessEscapeQuestionAnswer(answer))
 		escape_question_dialog.SetCancelEvent(lambda answer = False : self.ProcessEscapeQuestionAnswer(answer))
-
-		width, height = escape_question_dialog.GetTextSize()
-		escape_question_dialog.SetWidth(width + self.ESCAPE_DIALOG_ADJUSTED_WIDTH)
-		escape_question_dialog.SetLineHeight(self.ESCAPE_DIALOG_TEXT_LINE_HEIGHT - height)
 		escape_question_dialog.Open()
 		self.escape_question_dialog = escape_question_dialog
 
@@ -96,7 +91,7 @@ class EscapeManager(ui.Window):
 
 	def __EscapePopupRangeCheck(self):
 		(x, y, z) = player.GetMainCharacterPosition()
-		if abs(x - self.escape_window_open_x) > player.SHOW_UI_WINDOW_LIMIT_RANGE or abs(y - self.escape_window_open_y) > player.SHOW_UI_WINDOW_LIMIT_RANGE:
+		if abs(x - self.escape_window_open_x) > self.ESCAPE_LIMIT_RANGE or abs(y - self.escape_window_open_y) > self.ESCAPE_LIMIT_RANGE:
 			chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.OPTION_ESCAPE_FAR_DISTANCE)
 			self.Close()
 

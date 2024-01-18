@@ -2,6 +2,7 @@ OPTION_ESCAPE_BUTTON_COOLTIME	Please try again later.
 OPTION_ESCAPE_CANNOT_ESCAPE_STATE	You cannot free yourself at the moment. Please try again later.
 OPTION_ESCAPE_FAR_DISTANCE	You cannot free yourself as you have moved more than 10 metres.
 OPTION_ESCAPE_QUESTION_ANSWER_NO	You haven't freed yourself.
-OPTION_ESCAPE_QUESTION_MESSAGE	You will either be teleported to an empty location or to the village.\n Do you want to free your character?
+OPTION_ESCAPE_QUESTION_MESSAGE1	You will either be teleported to an empty location or to the village.
+OPTION_ESCAPE_QUESTION_MESSAGE2	Do you want to free your character?
 OPTION_ESCAPE_SYSTEM_BUTTON_TOOLTIP	Use this option if you are stuck.
 OPTION_ESCAPE_WAIT_MESSAGE	You will be freed in %d seconds.
