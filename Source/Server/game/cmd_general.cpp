@@ -44,7 +44,7 @@ ACMD(do_escape)
 		if (SECTREE_MANAGER::instance().GetRandomLocation(lMapIndex, kNewPos, rkPos.x, rkPos.y, iEscapeDistance))
 		{
 			char szBuf[255 + 1];
-			snprintf(szBuf, sizeof(szBuf), "(%d, %d) -> (%d, %d)",
+			snprintf(szBuf, sizeof(szBuf), "%ld, (%d, %d) -> (%d, %d)",
 				lMapIndex, rkPos.x, rkPos.y, kNewPos.x, kNewPos.y);
 			LogManager::instance().CharLog(ch, lMapIndex, "ESCAPE", szBuf);
 
@@ -54,8 +54,8 @@ ACMD(do_escape)
 		else
 		{
 			char szBuf[255 + 1];
-			snprintf(szBuf, sizeof(szBuf), "(%d, %d) -> EMPIRE START POSITION",
-				lMapIndex, rkPos.x, rkPos.y, kNewPos.x, kNewPos.y);
+			snprintf(szBuf, sizeof(szBuf), "%ld, (%d, %d) -> EMPIRE START POSITION",
+				lMapIndex, rkPos.x, rkPos.y);
 			LogManager::instance().CharLog(ch, lMapIndex, "ESCAPE", szBuf);
 
 			ch->WarpSet(g_start_position[bEmpire][0], g_start_position[bEmpire][1]);
